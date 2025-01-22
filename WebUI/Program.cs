@@ -12,16 +12,16 @@ namespace WebUI
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
-            //½« BootstrapBlazor ¿âÌí¼Óµ½ ASP.NET Core ÏîÄ¿ÖĞµÄÒÀÀµ¹ØÏµ×¢ÈëÈİÆ÷ÖĞ
+            //å°† BootstrapBlazor åº“æ·»åŠ åˆ° ASP.NET Core é¡¹ç›®ä¸­çš„ä¾èµ–å…³ç³»æ³¨å…¥å®¹å™¨ä¸­
             builder.Services.AddBootstrapBlazor();
 
             builder.Services.AddTransient<DataLoaderService>();
 
-            // »ñÈ¡»·¾³±äÁ¿
+            // è·å–ç¯å¢ƒå˜é‡
             var environment = builder.HostEnvironment.Environment;
             var baseAddress = environment == "Development" ? "https://localhost:7240/" : "http://localhost:8899/";
 
-            // ×¢²á HttpClient ²¢ÉèÖÃ BaseAddress
+            // æ³¨å†Œ HttpClient å¹¶è®¾ç½® BaseAddress
             builder.Services.AddScoped(sp => new HttpClient(new HttpClientHandler { AllowAutoRedirect = false })
             {
                 BaseAddress = new Uri(baseAddress)
